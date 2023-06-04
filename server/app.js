@@ -1,11 +1,11 @@
-// require("dotenv").config({ path: "./config/config.env" });
+require("dotenv").config({ path: "./config/config.env" });
 const express = require("express");
 // const mongoose = require("mongoose");
 const morgan = require("morgan");
 
 const connectDB = require("./config/db");
 
-// const auth = require("./middlewares/auth");
+const auth = require("./middlewares/auth");
 
 const app = express();
 
@@ -15,11 +15,8 @@ app.use(morgan("tiny"));
 // app.use(require("cors")());
 
 // routes
-app.use("/",(req, res)=>{
-    res.send("hello");
-});
 
-// app.use("/api", require("./routes/auth"));
+app.use("/api", require("./routes/auth"));
 // app.use("/api", require("./routes/contact"));
 
 // server configurations.
